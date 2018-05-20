@@ -42,25 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicantEducationPoco.cs" />
-    <Compile Include="ApplicantJobApplicationsPoco.cs" />
-    <Compile Include="ApplicantProfilesPoco.cs" />
-    <Compile Include="ApplicantResumesPoco.cs" />
-    <Compile Include="ApplicantSkillsPoco.cs" />
+    <Compile Include="ApplicantJobApplicationPoco.cs" />
+    <Compile Include="ApplicantProfilePoco.cs" />
+    <Compile Include="ApplicantResumePoco.cs" />
+    <Compile Include="ApplicantSkillPoco.cs" />
     <Compile Include="ApplicantWorkHistoryPoco.cs" />
-    <Compile Include="CompanyDescriptionsPoco.cs" />
-    <Compile Include="CompanyJobEducationsPoco.cs" />
-    <Compile Include="CompanyJobsDescriptionsPoco.cs" />
-    <Compile Include="CompanyJobSkillsPoco.cs" />
-    <Compile Include="CompanyJobsPoco.cs" />
-    <Compile Include="CompanyLocationsPoco.cs" />
-    <Compile Include="CompanyProfilesPoco.cs" />
+    <Compile Include="CompanyDescriptionPoco.cs" />
+    <Compile Include="CompanyJobEducationPoco.cs" />
+    <Compile Include="CompanyJobDescriptionPoco.cs" />
+    <Compile Include="CompanyJobSkillPoco.cs" />
+    <Compile Include="CompanyJobPoco.cs" />
+    <Compile Include="CompanyLocationPoco.cs" />
+    <Compile Include="CompanyProfilePoco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityLoginsLogPoco.cs" />
-    <Compile Include="SecurityLoginsPoco.cs" />
-    <Compile Include="SecurityLoginsRolesPoco.cs" />
-    <Compile Include="SecurityRolesPoco.cs" />
-    <Compile Include="SystemCountryCodesPoco.cs" />
-    <Compile Include="SystemLanguageCodesPoco.cs" />
+    <Compile Include="SecurityLoginLogPoco.cs" />
+    <Compile Include="SecurityLoginPoco.cs" />
+    <Compile Include="SecurityLoginRolePoco.cs" />
+    <Compile Include="SecurityRolePoco.cs" />
+    <Compile Include="SystemCountryCodePoco.cs" />
+    <Compile Include="SystemLanguageCodePoco.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
