@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class ApplicantWorkHistoryRepository : IDataRepository<ApplicantWorkHistoryPoco>
+    public class ApplicantWorkHistoryRepository : IDataRepository<ApplicantWorkHistoryPoco>
     {
         public void Add(params ApplicantWorkHistoryPoco[] items)
         {
