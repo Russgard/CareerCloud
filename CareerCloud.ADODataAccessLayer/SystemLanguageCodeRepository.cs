@@ -2,6 +2,7 @@
 using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -9,11 +10,32 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    public class SystemLanguageCodeRepository : IDataRepository<SystemLanguageCodePoco>
+    public class SystemLanguageCodeRepository : BaseADO, IDataRepository<SystemLanguageCodePoco>
     {
         public void Add(params SystemLanguageCodePoco[] items)
         {
-            throw new NotImplementedException();
+            SqlConnection _conn = new SqlConnection(_connString);
+            using (_conn)
+            {                
+                SqlCommand cmd = new SqlCommand { Connection = _conn };
+
+                _conn.Open();
+
+                foreach (SystemLanguageCodePoco item in items)
+                {
+                    cmd.CommandText = @"INSERT INTO dbo.System_Language_Codes 
+                    (LanguageID, Name, Native_Name) 
+                    VALUES 
+                    (@LanguageID, @Name, @Native_Name);";
+
+                    cmd.Parameters.AddWithValue("@LanguageID", item.LanguageID);
+                    cmd.Parameters.AddWithValue("@Name", item.Name);
+                    cmd.Parameters.AddWithValue("@Native_Name", item.NativeName);
+                    
+                    int rowsEffected = cmd.ExecuteNonQuery();
+                }
+                _conn.Close();
+            }
         }
 
         public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
@@ -23,7 +45,34 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<SystemLanguageCodePoco> GetAll(params Expression<Func<SystemLanguageCodePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            SqlConnection _conn = new SqlConnection(_connString);
+            SystemLanguageCodePoco[] pocos = new SystemLanguageCodePoco[1000];
+            using (_conn)
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    Connection = _conn,
+                    CommandText = @"SELECT * FROM dbo.System_Language_Codes;"
+                };
+                _conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int step = 0;
+                while (reader.Read())
+                {
+                    SystemLanguageCodePoco poco = new SystemLanguageCodePoco
+                    {
+                        LanguageID = (string)reader[0],
+                        Name = (string)reader[1],
+                        NativeName = (string)reader[2]
+                    };
+
+                    pocos[step] = poco;
+                    step++;
+                }
+                _conn.Close();
+            }
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<SystemLanguageCodePoco> GetList(Expression<Func<SystemLanguageCodePoco, bool>> where, params Expression<Func<SystemLanguageCodePoco, object>>[] navigationProperties)
@@ -33,17 +82,52 @@ namespace CareerCloud.ADODataAccessLayer
 
         public SystemLanguageCodePoco GetSingle(Expression<Func<SystemLanguageCodePoco, bool>> where, params Expression<Func<SystemLanguageCodePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<SystemLanguageCodePoco> pocos = GetAll().AsQueryable();
+            return pocos.Where(where).FirstOrDefault();
         }
 
         public void Remove(params SystemLanguageCodePoco[] items)
         {
-            throw new NotImplementedException();
+            SqlConnection _conn = new SqlConnection(_connString);
+            using (_conn)
+            {
+
+                SqlCommand cmd = new SqlCommand { Connection = _conn };
+
+                _conn.Open();
+                foreach (SystemLanguageCodePoco item in items)
+                {
+                    cmd.CommandText = @"DELETE FROM dbo.System_Language_Codes 
+                                    WHERE LanguageID = @Id;";
+                    cmd.Parameters.AddWithValue("@Id", item.LanguageID);
+
+                    int rowsEffected = cmd.ExecuteNonQuery();
+                }
+                _conn.Close();
+            }
         }
 
         public void Update(params SystemLanguageCodePoco[] items)
         {
-            throw new NotImplementedException();
+            SqlConnection _conn = new SqlConnection(_connString);
+            using (_conn)
+            {
+                SqlCommand cmd = new SqlCommand { Connection = _conn };
+
+                _conn.Open();
+                foreach (SystemLanguageCodePoco item in items)
+                {
+                    cmd.CommandText = @"UPDATE dbo.System_Language_Codes
+                                    SET Name = @Name, Native_Name = @Native_Name
+                                    WHERE LanguageID = @LanguageID;";
+                    cmd.Parameters.AddWithValue("@LanguageID", item.LanguageID);
+                    cmd.Parameters.AddWithValue("@Name", item.Name);
+                    cmd.Parameters.AddWithValue("@Native_Name", item.NativeName);
+                
+                    int rowsEffected = cmd.ExecuteNonQuery();
+                }
+                _conn.Close();
+            }
         }
     }
 }

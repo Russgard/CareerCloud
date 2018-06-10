@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{971EF43E-2904-444B-96AB-0EE6D3E34A42}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CareerCloud.ADODataAccessLayer</RootNamespace>
-    <AssemblyName>CareerCloud.ADODataAccessLayer</AssemblyName>
+    <ProjectGuid>{9BA6E064-0826-473A-B329-039D6BBB3B7F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestADO</RootNamespace>
+    <AssemblyName>TestADO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,7 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,32 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicantEducationRepository.cs" />
-    <Compile Include="ApplicantJobApplicationRepository.cs" />
-    <Compile Include="ApplicantProfileRepository.cs" />
-    <Compile Include="ApplicantResumeRepository.cs" />
-    <Compile Include="ApplicantSkillRepository.cs" />
-    <Compile Include="ApplicantWorkHistoryRepository.cs" />
-    <Compile Include="BaseADO.cs" />
-    <Compile Include="CompanyDescriptionRepository.cs" />
-    <Compile Include="CompanyJobDescriptionRepository.cs" />
-    <Compile Include="CompanyJobEducationRepository.cs" />
-    <Compile Include="CompanyJobRepository.cs" />
-    <Compile Include="CompanyJobSkillRepository.cs" />
-    <Compile Include="CompanyLocationRepository.cs" />
-    <Compile Include="CompanyProfileRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityLoginRepository.cs" />
-    <Compile Include="SecurityLoginsLogRepository.cs" />
-    <Compile Include="SecurityLoginsRoleRepository.cs" />
-    <Compile Include="SecurityRoleRepository.cs" />
-    <Compile Include="SystemCountryCodeRepository.cs" />
-    <Compile Include="SystemLanguageCodeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CareerCloud.DataAccessLayer\CareerCloud.DataAccessLayer.csproj">
-      <Project>{03c12359-e42c-41da-9254-969660d0adb5}</Project>
-      <Name>CareerCloud.DataAccessLayer</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CareerCloud.ADODataAccessLayer\CareerCloud.ADODataAccessLayer.csproj">
+      <Project>{971ef43e-2904-444b-96ab-0ee6d3e34a42}</Project>
+      <Name>CareerCloud.ADODataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\CareerCloud.Pocos\CareerCloud.Pocos.csproj">
       <Project>{c4b51e8a-eabc-4646-b97c-0368cc48ddca}</Project>
