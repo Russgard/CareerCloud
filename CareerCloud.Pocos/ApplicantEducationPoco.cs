@@ -14,16 +14,24 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public Guid Applicant { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Major { get; set; }
         [Column("Certificate_Diploma")]
+        [StringLength(100)]
         public string CertificateDiploma { get; set; }
-        [Column("Start_Date")]
+        [Column("Start_Date", TypeName = "date")]
         public DateTime? StartDate { get; set; }
-        [Column("Completion_Date")]
+        [Column("Completion_Date", TypeName = "date")]
         public DateTime? CompletionDate { get; set; }
         [Column("Completion_Percent")]
         public byte? CompletionPercent { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp", TypeName = "timestamp")]       
+        [MaxLength(8)]
+        [Timestamp]
         public byte[] TimeStamp { get; set; }
+
+        public virtual ApplicantProfilePoco ApplicantProfiles { get; set; }
+
     }
 }

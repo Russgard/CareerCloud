@@ -14,8 +14,11 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public Guid Applicant { get; set; }
+        [Required]
         public string Resume { get; set; }
-        [Column("Last_Updated")]
+        [Column("Last_Updated", TypeName = "datetime2")]
         public DateTime? LastUpdated { get; set; }
+
+        public virtual ApplicantProfilePoco ApplicantProfiles { get; set; }
     }
 }

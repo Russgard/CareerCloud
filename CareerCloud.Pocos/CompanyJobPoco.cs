@@ -14,14 +14,24 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public Guid Company { get; set; }
-        [Column("Profile_Created")]
+        [Column("Profile_Created", TypeName = "datetime2")]
         public DateTime ProfileCreated { get; set; }
         [Column("Is_Inactive")]
         public bool IsInactive { get; set; }
         [Column("Is_Company_Hidden")]
         public bool IsCompanyHidden { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp", TypeName = "timestamp")]
+        [MaxLength(8)]
+        [Timestamp]
         public byte[] TimeStamp { get; set;}
+
+        public virtual CompanyProfilePoco CompanyProfiles { get; set; }
+
+        public virtual ICollection<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
+        public virtual ICollection<CompanyJobEducationPoco> CompanyJobEducations { get; set; }
+        public virtual ICollection<CompanyJobSkillPoco> CompanyJobSkills { get; set; }
+        public virtual ICollection<CompanyJobDescriptionPoco> CompanyJobsDescriptions { get; set; }
+
 
     }
 }

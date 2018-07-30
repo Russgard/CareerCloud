@@ -14,8 +14,12 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public Guid Applicant { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Skill { get; set; }
         [Column("Skill_Level")]
+        [Required]
+        [StringLength(10)]
         public string SkillLevel { get; set; }
         [Column("Start_Month")]
         public byte StartMonth { get; set; }
@@ -25,7 +29,11 @@ namespace CareerCloud.Pocos
         public byte EndMonth { get; set; }
         [Column("End_Year")]
         public int EndYear { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp", TypeName = "timestamp")]
+        [MaxLength(8)]
+        [Timestamp]
         public byte[] TimeStamp { get; set; }
+
+        public virtual ApplicantProfilePoco ApplicantProfiles { get; set; }
     }
 }

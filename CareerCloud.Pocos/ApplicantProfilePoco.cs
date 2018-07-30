@@ -18,18 +18,39 @@ namespace CareerCloud.Pocos
         public decimal? CurrentSalary { get; set; }
         [Column("Current_Rate")]
         public decimal? CurrentRate { get; set; }
+        [StringLength(10)]
         public string Currency { get; set; }
         [Column("Country_Code")]
+        [StringLength(10)]
         public string Country { get; set; }
         [Column("State_Province_Code")]
+        [StringLength(10)]
         public string Province { get; set; }
         [Column("Street_Address")]
+        [StringLength(100)]
         public string Street { get; set; }
         [Column("City_Town")]
+        [StringLength(100)]
         public string City { get; set; }
         [Column("Zip_Postal_Code")]
+        [StringLength(20)]
         public string PostalCode { get; set; }
-        [Column("Time_Stamp")]
+        [Column("Time_Stamp", TypeName ="timestamp")]
+        [MaxLength(8)]
+        [Timestamp]
         public byte[] TimeStamp { get; set; }
+
+        public virtual SecurityLoginPoco SecurityLogins { get; set; }
+        public virtual SystemCountryCodePoco SystemCountryCodes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantEducationPoco> ApplicantEducations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantResumePoco> ApplicantResumes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantSkillPoco> ApplicantSkills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ApplicantWorkHistoryPoco> ApplicantWorkHistory { get; set; }
     }
 }
