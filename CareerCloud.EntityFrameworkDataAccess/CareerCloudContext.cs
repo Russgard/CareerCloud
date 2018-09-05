@@ -10,7 +10,12 @@ namespace CareerCloud.EntityFrameworkDataAccess
 {
     public class CareerCloudContext : DbContext
     {
-        public CareerCloudContext() : base ("dbconnection") { }
+        public CareerCloudContext(bool createProxy = true) : base ("dbconnection") {
+            Configuration.ProxyCreationEnabled = createProxy;
+            //Database.SetInitializer < CareerCloudContext >(null);
+            //Database.Log = Console.WriteLine;
+            //s => System.Diagnostics.Debug.WriteLine(s);
+        }
 
         public virtual DbSet<ApplicantEducationPoco> ApplicantEducations { get; set; }
         public virtual DbSet<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
@@ -289,6 +294,7 @@ namespace CareerCloud.EntityFrameworkDataAccess
             modelBuilder.Entity<SystemCountryCodePoco>()
                 .Property(e => e.Code)
                 .IsFixedLength()
+                .HasMaxLength(10)
                 .IsUnicode(false);
 
             modelBuilder.Entity<SystemCountryCodePoco>()
@@ -304,7 +310,7 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
             modelBuilder.Entity<SystemLanguageCodePoco>()
                 .Property(e => e.LanguageID)
-                .IsFixedLength()
+                //.IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<SystemLanguageCodePoco>()

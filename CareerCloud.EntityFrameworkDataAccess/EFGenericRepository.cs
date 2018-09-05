@@ -12,9 +12,9 @@ namespace CareerCloud.EntityFrameworkDataAccess
     public class EFGenericRepository<T> : IDataRepository<T> where T : class
     {
         private CareerCloudContext _context;
-        public EFGenericRepository()
+        public EFGenericRepository(bool createProxy = true)
         {
-            _context = new CareerCloudContext(); 
+            _context = new CareerCloudContext(createProxy); 
         }
 
         public IQueryable<T> DbQuery(params Expression<Func<T, object>>[] navigationProperties)
@@ -30,12 +30,13 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         public void Add(params T[] items)
         {
-            foreach ( T item in items )
-            {
-                _context.Entry(item).State = EntityState.Added;
-            }
-            _context.SaveChanges();
             
+             foreach (T item in items)
+             {
+                _context.Entry(item).State = EntityState.Added;
+             }
+              _context.SaveChanges();
+           
         }
 
         public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
