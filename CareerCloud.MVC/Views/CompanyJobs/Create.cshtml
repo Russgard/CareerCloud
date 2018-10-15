@@ -1,0 +1,121 @@
+﻿@model CareerCloud.MVC.Models.CompanyJobPost
+@{
+	ViewBag.Title = "Create ";
+}
+
+<h2>Company Jobs</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<h4>Create a Job</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.JobName, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.JobName, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Major, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Major, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Major, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.EduImportance, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.EduImportance, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.EduImportance, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.Skill, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.Skill, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.Skill, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.EduImportance, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.EduImportance, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.EduImportance, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.SkillLevel, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.SkillLevel, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Enter start date here..." } })
+			@Html.ValidationMessageFor(model => model.SkillLevel, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.SkillImportance, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.SkillImportance, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "Enter start date here..." } })
+			@Html.ValidationMessageFor(model => model.SkillImportance, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.IfInactive, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			<div class="checkbox">
+				@Html.EditorFor(model => model.IfInactive)
+				@Html.ValidationMessageFor(model => model.IfInactive, "", new { @class = "text-danger" })
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.IfHidden, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			<div class="checkbox">
+				@Html.EditorFor(model => model.IfHidden)
+				@Html.ValidationMessageFor(model => model.IfHidden, "", new { @class = "text-danger" })
+			</div>
+		</div>
+	</div>
+
+</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Create" class="btn btn-default" />
+		</div>
+	
+</div>
+
+}
+	<div>
+		@Html.ActionLink("Cancel", "Index")
+	</div>
+<script type="text/javascript">
+	$(function () { $('.datepicker').datepicker(); });
+</script>
+
+@section Scripts {
+	@Scripts.Render("~/bundles/mybundle")
+}
+

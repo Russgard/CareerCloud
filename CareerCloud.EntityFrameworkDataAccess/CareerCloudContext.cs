@@ -12,7 +12,7 @@ namespace CareerCloud.EntityFrameworkDataAccess
     {
         public CareerCloudContext(bool createProxy = true) : base ("dbconnection") {
             Configuration.ProxyCreationEnabled = createProxy;
-            //Database.SetInitializer < CareerCloudContext >(null);
+            Database.SetInitializer < CareerCloudContext >(null);
             //Database.Log = Console.WriteLine;
             //s => System.Diagnostics.Debug.WriteLine(s);
         }

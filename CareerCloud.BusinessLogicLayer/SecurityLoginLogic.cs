@@ -35,8 +35,8 @@ public class SecurityLoginLogic : BaseLogic<SecurityLoginPoco>
                 poco.Created = DateTime.Now.ToUniversalTime();
                 poco.IsLocked = false;
                 poco.IsInactive = false;
-                poco.ForceChangePassword = true;
-                poco.PasswordUpdate = poco.Created.AddDays(30);
+                poco.ForceChangePassword = false;
+                //poco.PasswordUpdate = poco.Created.AddDays(30);
             }
             base.Add(pocos);
         }
@@ -44,7 +44,16 @@ public class SecurityLoginLogic : BaseLogic<SecurityLoginPoco>
         public override void Update(SecurityLoginPoco[] pocos)
         {
             Verify(pocos);
-            base.Update(pocos);
+            foreach (SecurityLoginPoco poco in pocos)
+            {
+                poco.Password = ComputeHash(poco.Password, new byte[saltLengthLimit]);
+                poco.Created = DateTime.Now.ToUniversalTime();
+                poco.IsLocked = false;
+                poco.IsInactive = false;
+                poco.ForceChangePassword = false;
+                //poco.PasswordUpdate = poco.Created.AddDays(30);
+            }
+        base.Update(pocos);
         }
 
         protected override void Verify(SecurityLoginPoco[] pocos)

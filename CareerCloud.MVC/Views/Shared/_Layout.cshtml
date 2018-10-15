@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Job Portal, ASP.NET MVC</title>
+	
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+	<style>
+		.navbar-inverse{
+			background-color:#337ab7;
+			border-color:#2e6da4;
+			color:#e9eaff;
+		}
+		.navbar-inverse .navbar-nav > li > a {
+			color:#e9eaff;
+		}
+		.navbar-inverse .navbar-brand {
+			color: #e9eaff;
+		}
+		.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+			color: #fff;
+			background-color: #286090;
+			border-color:#204d74;
+		}
+		dropdown-menu {
+			min-width: 108px;
+		}
+	</style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Career Cloud", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					@RenderSection("nav_left", required: false)
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					@RenderSection("nav_right", required: false)
+				</ul>
+			</div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - www.russgard.com</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

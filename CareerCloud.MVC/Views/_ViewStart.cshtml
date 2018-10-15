@@ -1,0 +1,28 @@
+﻿@{
+	var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+
+	if (controller.Contains("SignUp"))
+	{
+		Layout = "~/Views/Shared/_Default.cshtml";
+	}
+	else if (controller.Contains("Company"))
+	{
+		Layout = "~/Views/Shared/_Company.cshtml";
+	}
+	else if (controller.Contains("Applicant"))
+	{
+		Layout = "~/Views/Shared/_Applicant.cshtml";
+	}
+	else if (controller == "SecurityLogin")
+	{
+		Layout = "~/Views/Shared/_Security.cshtml";
+	}
+	else if (controller == "Admin")
+	{
+		Layout = "~/Views/Shared/_Admin.cshtml";
+	}
+	else
+	{
+		Layout = "~/Views/Shared/_Default.cshtml";
+	}
+}

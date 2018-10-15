@@ -1,0 +1,31 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section nav_left
+{
+	<li>@Html.ActionLink("Resume Search", "Index", "CompanyResumeSearch")</li>
+	<li>@Html.ActionLink("Posted Jobs", "Index", "CompanyJobs")</li>
+	<li class="dropdown">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			Profile	<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>@Html.ActionLink("Resume Search", "Index", "CompanyResumeSearch")</li>
+			<li>@Html.ActionLink("Posted Jobs", "Index", "CompanyJobs")</li>
+			<li>@Html.ActionLink("Profile", "Index", "CompanyProfile")</li>
+			<li>@Html.ActionLink("Description", "Index", "CompanyDescription")</li>
+			<li>@Html.ActionLink("Profile", "Index", "CompanyProfile")</li>
+			<li>@Html.ActionLink("Login", "Index", "CompanyLogin")</li>
+
+		</ul>
+	</li>
+}
+
+@section nav_right
+{
+	<li>@Html.ActionLink("Sign Out", "Index", "LogOut")</li>
+}
+
+@RenderBody()
+@RenderSection("scripts", required: false)

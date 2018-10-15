@@ -1,0 +1,22 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section nav_right
+{
+	<li class="dropdown" id="signup">
+		<a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up <span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li>@Html.ActionLink("Applicant", "Index", "ApplicantSignUp")</li>
+			<li>@Html.ActionLink("Company", "index", "CompanySignUp")</li>
+			
+
+		</ul>
+	</li>
+	<li>@Html.ActionLink("Sign In", "index", "SecurityLogIn")</li>
+}
+
+@RenderBody()
+@RenderSection("scripts", required: false)

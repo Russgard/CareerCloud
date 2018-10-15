@@ -19,12 +19,18 @@ namespace CareerCloud.Pocos
         public string Major { get; set; }
         [Column("Certificate_Diploma")]
         [StringLength(100)]
+        [Display(Name = "Certificate / Diploma")]
         public string CertificateDiploma { get; set; }
         [Column("Start_Date", TypeName = "date")]
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
         [Column("Completion_Date", TypeName = "date")]
+        [Display(Name = "Completion Date")]
+        [DataType(DataType.Date)]
         public DateTime? CompletionDate { get; set; }
         [Column("Completion_Percent")]
+        [Display(Name = "Completion Percent")]
         public byte? CompletionPercent { get; set; }
         [Column("Time_Stamp", TypeName = "timestamp")]       
         [MaxLength(8)]

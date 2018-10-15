@@ -60,28 +60,28 @@ namespace CareerCloud.WCF
             return logic.GetAll();
         }
 
-        public SecurityLoginPoco GetSingleSecurityLogin(Guid Id)
+        public SecurityLoginPoco GetSingleSecurityLogin(string Id)
         {
             SecurityLoginLogic logic = new SecurityLoginLogic(new EFGenericRepository<SecurityLoginPoco>(false));
-            return logic.Get(Id);
+            return logic.Get(Guid.Parse(Id));
         }
 
-        public SecurityLoginsLogPoco GetSingleSecurityLoginsLog(Guid Id)
+        public SecurityLoginsLogPoco GetSingleSecurityLoginsLog(string Id)
         {
             SecurityLoginsLogLogic logic = new SecurityLoginsLogLogic(new EFGenericRepository<SecurityLoginsLogPoco>(false));
-            return logic.Get(Id);
+            return logic.Get(Guid.Parse(Id));
         }
 
-        public SecurityLoginsRolePoco GetSingleSecurityLoginsRole(Guid Id)
+        public SecurityLoginsRolePoco GetSingleSecurityLoginsRole(string Id)
         {
             SecurityLoginsRoleLogic logic = new SecurityLoginsRoleLogic(new EFGenericRepository<SecurityLoginsRolePoco>(false));
-            return logic.Get(Id);
+            return logic.Get(Guid.Parse(Id));
         }
 
-        public SecurityRolePoco GetSingleSecurityRole(Guid Id)
+        public SecurityRolePoco GetSingleSecurityRole(string Id)
         {
             SecurityRoleLogic logic = new SecurityRoleLogic(new EFGenericRepository<SecurityRolePoco>(false));
-            return logic.Get(Id);
+            return logic.Get(Guid.Parse(Id));
         }
 
         public void RemoveSecurityLogin(SecurityLoginPoco[] pocos)
